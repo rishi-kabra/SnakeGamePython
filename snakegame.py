@@ -111,10 +111,14 @@ while True:
          
     if head.distance(food) < 20:
         # Move the food to a random spot
-        x = random.randint(-280,280)
-        y = random.randint(-280,280)
+        p = head.xcor()
+        q = head.ycor()
+        x = p; y = q
+        while x==p and y==q:
+            x = random.randint(-280,280)
+            y = random.randint(-280,280)
         food.goto(x,y)
-
+        
         # Add a segment
         new_segment = turtle.Turtle()
         new_segment.speed(0)
