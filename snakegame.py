@@ -111,14 +111,25 @@ while True:
          
     if head.distance(food) < 20:
         # Move the food to a random spot
-        p = head.xcor()
-        q = head.ycor()
-        x = p; y = q
-        while x==p and y==q:
+        x = random.randint(-280,280)
+        y = random.randint(-280,280)
+        food.goto(x,y)
+
+        #making sure food doesnt spawn in head of snake
+        if x==head.xcor() and y==head.xcor():
             x = random.randint(-280,280)
             y = random.randint(-280,280)
-        food.goto(x,y)
-        
+            food.goto(x,y)
+
+        #making sure food doesnt spawn in body of snake
+        for segment in segments:
+            if segment.distance(food)<20:
+                x = random.randint(-280,280)
+                y = random.randint(-280,280)
+                food.goto(x,y)
+
+
+
         # Add a segment
         new_segment = turtle.Turtle()
         new_segment.speed(0)
