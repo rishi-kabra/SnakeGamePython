@@ -35,12 +35,15 @@ food.speed(0)
 food.shape("circle")
 food.color("red")
 food.penup()
-food.goto(0,100)
+x = random.randint(-430,430)
+y = random.randint(-430,430)        
+food.goto(x,y)
 
+#bodies of A and B
 segments_a = []
 segments_b = []
 
-#Pen
+#Score/Info Writing
 pen = turtle.Turtle()
 pen.speed(0)
 pen.shape("square")
@@ -121,8 +124,7 @@ def move_b():
         b.setx(x+20)
 
 
-
-#keyboard bindings
+#keyboard bindings/inputs
 wn.listen()
 wn.onkeypress(go_up, "Up")
 wn.onkeypress(go_down, "Down")
@@ -191,7 +193,7 @@ while True:
 
         #increasing speed
         if delay > 0.02:
-            delay -= 0.004
+            delay -= 0.001
         
         pen.clear()
         pen.write("A became bigger", align="center", font=("Courier", 24, "normal")) 
@@ -212,7 +214,7 @@ while True:
 
         #increasing speed
         if delay > 0.02:
-            delay -= 0.004
+            delay -= 0.001
       
         pen.clear()
         pen.write("B became bigger", align="center", font=("Courier", 24, "normal")) 
@@ -245,7 +247,6 @@ while True:
 
 
     #Moving 
-
     move_a()
     move_b()
 
